@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block title %}Todo | Home{% endblock %}
+
+{% block content %}
+<!-- {{todos}} -->
+<div class="tood-home-container">
+  <form action="{% url 'todo:list' %}" method="POST" class="add-todo">
+    {% csrf_token %}
+    {{form.as_table}}
+    <button id="add-todo">add</button>
+  </form>
+  {% if todos %}
+  <table cellspacing="0">
+    <thead>
+      <tr>
+        <td>Sno</td>
+        <td>content</td>
+        <td>edit</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for todo in todos %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ todo.content }}</td>
+        <td>
+          <form action="{% url 'todo:edit' todo.id %}" method="GET" >
+            <button id="edit-button">edit</button>
+          </form>
+          <form action="{% url 'todo:delete' todo.id %}" >
+            <button id="remove-button">remove</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <h1>No data to show</h1>
+  {% endif %}
+</div>
+{% endblock %}

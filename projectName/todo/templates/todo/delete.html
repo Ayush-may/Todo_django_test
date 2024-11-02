@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Delete Todo - {{ todo.content }}
+{% endblock %}
+
+{% block content %}
+
+<div class="tood-home-container">
+  <p>Are u sure want to delete this todo ?</p>
+  <form action="{% url 'todo:delete' todo.id %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+  </form>
+  <a href="{% url 'todo:list' %}" >cancel</a>
+</div>
+
+{% endblock %}

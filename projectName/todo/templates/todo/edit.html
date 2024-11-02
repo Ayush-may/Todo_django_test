@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  Edit {{ todo.content }}
+{% endblock %}
+
+{% block content %}
+<div class="tood-home-container">
+  <form action="{% url 'todo:edit' todo.id %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" >save changes</button>
+  </form>
+</div>
+{% endblock %}

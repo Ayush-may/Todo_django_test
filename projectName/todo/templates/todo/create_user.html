@@ -1,0 +1,14 @@
+{% extends 'nothing.html' %}
+
+{% block content %}
+  <div style="margin: auto auto;">
+    <h1 style="text-align: center;">create user</h1>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <input type="text" name="username" placeholder="enter username here..">
+      <input type="password" name="password" placeholder="enter password here..">
+      <button type="submit" >create user</button>
+    </form>
+    <a href="{% url 'todo:index' %}" >go back</a>
+  </div>
+{% endblock %}

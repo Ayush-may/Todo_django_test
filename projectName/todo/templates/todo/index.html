@@ -1,0 +1,14 @@
+{% extends 'nothing.html' %}
+
+{% block title %}
+choose the fucking option !!!
+{% endblock %}
+
+{% block content %}
+<div style="margin: auto auto;">
+  <div style="width: fit-content;">
+    <a href="{% url 'todo:login_user' %}" >Login</a>
+    <a href="{% url 'todo:create_user' %}" >create user</a>
+  </div>
+</div>
+{% endblock %}
